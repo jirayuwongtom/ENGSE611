@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำตัวเอง</title>
+    <!-- กำหนดเส้นตาราง -->
+     <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body id ="home">
+    <!-- ส่วนหัวของเว็บไซต์ -->
+    <header>
+    <h1>จิรายุ วงศ์ต่อม</h1>
+    <img src="D:\2.Work SE P1 T2\ENGSE611-Modern Web Technology Development\ENGSE611\image\Picture1.png" alt = "Picture">
+    </header>
+
+    <!-- เมนูนำทาง -->
+     <nav>
+        <ul>
+        <li><a href="#home">หน้าแรก</a></li>
+        <li><a href="#about">เกี่ยวกับฉัน</a></li>
+        <li><a href="#hobby">งานอดิเรก</a></li>
+        <li><a href="#contact">ติดต่อ</a></li>
+        </ul>
+     </nav>
+
+     <main>
+        <section id = "about">
+            <h2>เกี่ยวกับฉัน</h2>
+            <p>ชื่อ ไทม์ อายุ 21 เกิดวันที่ 15 ธันวาคม 2547</p>
+            <p>กำลังศึกษาอยู่ที่ มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา เชียงใหม่ ดอยสะเก็ด</p>
+            <p>คณะ วิศวกรรมศาสตร์ สาขา วิศวกรรมไฟฟ้า สาขาวิชา วศ.บ.วิศวกรรมซอฟต์แวร์</p>
+        </section>
+
+         <section id = "hobby">
+         <h2>งานอดิเรก</h2>
+         <ol>
+            <li>ดูหนัง</li>
+            <li>ฟังเพลง</li>
+            <li>เล่นเกม</li>
+         </ol>
+         </section>
+
+         <!-- ส่วนหัวของตาราง -->
+     <table>
+        <caption>ตารางข้อมูล</caption>
+        <tr>
+            <th rowspan="2">ลำดับ</th>
+            <th colspan="2">ข้อมูลส่วนตัว</th>
+            <th rowspan="2">คะแนนรวม</th>
+        </tr>
+        <tr>
+            <th>ชื่อ</th>
+            <th>อายุ</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>จิรายุ วงศ์ต่อม</td>
+            <td>21</td>
+            <td>85</td>
+        </tr>
+     </table>
+
+     <!-- ส่วนหัวของ form -->
+     <form>
+        <h3>ข้อมูลผู้ใช้</h3>
+        <label>ชื่อ : </label>
+        <input type="text" name="name">
+        <br><br>
+        <label>เพศ : </label>
+        <input type="radio" name="gender" value="male"> ชาย
+        <input type="radio" name="gender" value="female" > หญิง
+        <br><br>
+        <label>Email : </label>
+        <input type="email" name="email">
+        <br><br>
+        <button type="submit">ส่งข้อมูล</button>
+     </form>
+     </main>
+
+     <footer id="contact">
+        <h3>ติดต่อ</h3>
+        <a href="https://facebook.com/jirayuwongtom" target="_blank">Facebook</a> |
+        <a href="https://github.com/jirayuwongtom/ENGSE611" target="_blank">GitHub</a>
+        <p>&copy; 2025 Jirayu Wongtom</p>
+     </footer>
+
+</body>
+</html>
