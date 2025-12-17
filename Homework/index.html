@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>แนะนำตัวเอง</title>
-  
 </head>
 <body id ="home">
-    <!-- ส่วนหัวของเว็บไซต์ -->
+    <!-- การเขียนเว็บด้วย HTML5 -->
+    <!-- ฝึกการใช้ Semantic Tags -->
     <header>
-    <h1>จิรายุ วงศ์ต่อม</h1>
-    <img src="https://raw.githubusercontent.com/jirayuwongtom/ENGSE611/refs/heads/main/image/Picture1.png" alt = "My_Picture">
+        <h1>จิรายุ วงศ์ต่อม</h1>
+        <img src="https://raw.githubusercontent.com/jirayuwongtom/ENGSE611/refs/heads/main/image/Picture1.png" alt = "My_Picture">
     </header>
     <br>
-    <!-- เมนูนำทาง -->
     <nav>
         <ul>
         <li><a href="#home">หน้าแรก</a></li>
@@ -22,9 +21,7 @@
         <li><a href="#contact">ติดต่อ</a></li>
         </ul>
     </nav>
-    <br>
-    <br>
-
+    <br><br>
     <main>
         <section id = "about">
             <h2>เกี่ยวกับฉัน</h2>
@@ -33,65 +30,62 @@
             <p>คณะ วิศวกรรมศาสตร์ สาขา วิศวกรรมไฟฟ้า สาขาวิชา วศ.บ.วิศวกรรมซอฟต์แวร์</p>
         </section>
 
-         <section id = "hobby">
-         <h2>งานอดิเรก</h2>
-         <ol>
-            <li>ดูหนัง</li>
-            <li>ฟังเพลง</li>
-            <li>เล่นเกม</li>
-         </ol>
-         </section>
-
-         <!-- ส่วนหัวของตาราง -->
-     <table border = "1">
-        <caption>ตารางข้อมูล</caption>
-        <tr>
-            <th rowspan="2">ลำดับ</th>
-            <th colspan="2">ข้อมูลส่วนตัว</th>
-            <th rowspan="2">คะแนนรวม</th>
-        </tr>
-        <tr>
-            <th>ชื่อ</th>
-            <th>อายุ</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>จิรายุ วงศ์ต่อม</td>
-            <td>21</td>
-            <td>100</td>
-        </tr>
-     </table>
-     <br>
-     <br>
-
-     <!-- ส่วนหัวของ form -->
-     <form>
-        <h3>ข้อมูลผู้ใช้</h3>
-        <label>ชื่อ : </label>
-        <input type="text" name="name">
+        <section id = "hobby">
+            <h2>งานอดิเรก</h2>
+            <ol>
+                <li>ดูหนัง</li>
+                <li>ฟังเพลง</li>
+                <li>เล่นเกม</li>
+            </ol>
+        </section>
+        <table border = "1">
+            <caption>ข้อมูลส่วนตัว</caption>
+            <tr>
+                <th rowspan="2">ลำดับ</th>
+                <th colspan="2">ข้อมูลส่วนตัว</th>
+            </tr>
+            <tr>
+                <th>ชื่อ</th>
+                <th>อายุ</th>
+            </tr>
+            <tr>
+               <td>1</td>
+                <td>จิรายุ วงศ์ต่อม</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ไทม์</td>
+                <td>21</td>
+            </tr>
+        </table>
         <br><br>
-        <label>เพศ : </label>
-        <input type="radio" name="gender" value="male"> ชาย
-        <input type="radio" name="gender" value="female" > หญิง
-        <br><br>
-        <label>Email : </label>
-        <input type="email" name="email">
-        <br><br>
-        <button type="submit">ส่งข้อมูล</button>
-     </form>
-     </main>
-     <br>
-     <br>
-     
-     <footer id="contact">
-        <h2>ติดต่อ</h2>
+        <form>
+            <h3>กรอกข้อมูล</h3>
+            <label>ชื่อ : </label>
+            <input type="text" name="name">
+            <br><br>
+            <label>เพศ : </label>
+            <input type="radio" name="gender" value="male"> ชาย
+            <input type="radio" name="gender" value="female" > หญิง
+            <br><br>
+            <label>Email : </label>
+            <input type="email" name="email">
+            <br><br>
+            <label>ข้อความเพิ่มเติม :</label><br>
+            <textarea name="message" rows="4" cols="30"></textarea>
+            <br><br>
+            <button type="submit">ส่งข้อมูล</button>  
+        </form>
+    </main>
+    <br><br>
+    <footer id="contact">
+        <h2>ช่องทางติดต่อ</h2>
         <a href="https://facebook.com/jirayuwongtom" target="_blank">Facebook</a> |
         <a href="https://github.com/jirayuwongtom" target="_blank">GitHub</a> |
         <a href="https://github.com/jirayuwongtom/ENGSE611" target="_blank">GitHub ENGSE611</a>
         <p>&copy; 2025 Jirayu Wongtom</p>
-     </footer>
-     <br>
-     <br>
-     <br>
+    </footer>
+    <br><br>
 </body>
 </html>
