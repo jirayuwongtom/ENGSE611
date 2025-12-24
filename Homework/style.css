@@ -20,7 +20,6 @@ h1:hover{
 
 #main-header {
     background: #FFFAF0;
-    color: white;
     padding: 10px;
     text-align: center;
 }
@@ -35,7 +34,6 @@ p {
 }
 
 nav ul {
-    list-style: none;
     text-align: center;
     padding: 0;
 }
@@ -71,5 +69,5 @@ input[type="text"]:focus {
 }
 
 .box-short {
-    border: 10px solid #000;
+    border: 5px solid #000;
 }
