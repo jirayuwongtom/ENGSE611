@@ -1,0 +1,75 @@
+body {
+    font-family:  "TH SarabunPSK",  sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #000000;
+    font-size: 50px;
+    text-shadow: 5px 5px 5px rgb(180, 180, 180);
+}
+h2 {
+    color: black;
+    font-size: 30px;
+}
+h1:hover{
+    color: #FF0000;
+    font-size: 50px;
+}
+
+#main-header {
+    background: #FFFAF0;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+p {
+    color: black;
+    font-size: 18px;
+}
+
+.highlight {
+    background-color: #FFD700;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+a {
+    font-size: 18px;
+}
+
+li {
+    font-weight: bold;
+}
+
+footer {
+    background: #F5F5DC;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+input[type="text"] {
+    border: 2px solid blue;
+    padding: 8px;
+    border-radius: 5px;
+}
+input[type="text"]:focus {
+    border-color: rgb(255, 0, 128);
+    outline: none;
+    background-color: #fff0fa;
+}
+
+.box-short {
+    border: 10px solid #000;
+}
