@@ -50,6 +50,9 @@ li {
     font-weight: bold;
 }
 
+a:hover {
+    color: #FF4500;
+}
 footer {
     background: #F5F5DC;
     color: black;
@@ -70,4 +73,10 @@ input[type="text"]:focus {
 
 .box-short {
     border: 5px solid #000;
+}
+
+main {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px;
 }
