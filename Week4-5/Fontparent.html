@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Font Size Demo</title>
+
+<style>
+
+    /* Parent ที่ควบคุมฟอนต์ทั้งหมด */
+    .parent {
+        font-size: 16px; /* ค่าเริ่มต้น */
+        border: 2px solid #ccc;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    /* Child ใช้ em → เปลี่ยนตาม parent */
+    .child-title {
+        font-size: 2em;   /* 2 × parent */
+        color: #c0392b;
+        font-weight: bold;
+    }
+
+    .child-text {
+        font-size: 1.2em; /* 1.2 × parent */
+        color: #2c3e50;
+    }
+
+    /* ตัวอย่างที่ใช้ px → ไม่ยืดหยุ่น */
+    .fixed-text {
+        font-size: 18px;
+        color: #2980b9;
+    }
+</style>
+
+</head>
+
+<body>
+
+<h2>สาธิต Font-size: Parent → Child (em)</h2>
+
+<form id="fontForm">
+    <label>ใส่ขนาดฟอนต์ Parent (px): </label>
+    <input type="number" id="fontSizeInput" value="16" min="10" max="40">
+    <button type="submit">ปรับขนาดฟอนต์</button>
+</form>
+
+<div class="parent" id="parentBox">
+    <p class="child-title">หัวข้อหลัก (2em)</p>
+    <p class="child-text">ข้อความย่อย (1.2em) → เปลี่ยนตาม Parent</p>
+    <p class="fixed-text">ข้อความแบบ px (18px) → ไม่เปลี่ยน</p>
+</div>
+
+<script>
+    document.getElementById("fontForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const newSize = document.getElementById("fontSizeInput").value;
+        document.getElementById("parentBox").style.fontSize = newSize + "px";
+    });
+</script>
+
+</body>
+</html>

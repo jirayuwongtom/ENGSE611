@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p:hover{
+            color: red;
+            background-color: #ffe5e5;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            border: 2px solid blue;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        input[type="text"]:focus {
+            border-color: rgb(255, 0, 128);
+            outline: none;
+            background-color: #fff0fa;
+        }
+    </style>
+</head>
+<body>
+    <h2>Pseudo-class :hover</h2>
+    <p>นำเมาส์มาวางบนข้อความนี้เพื่อดูเอฟเฟกต์</p>
+    <h2>Attribute Selectors [type="text"]</h2>
+    <input type="text" placeholder="พิมพ์ข้อความที่นี้"> 
+</body>
+</html>

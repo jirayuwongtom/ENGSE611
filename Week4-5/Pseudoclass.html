@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo-classes Demo</title>
+
+    <style>
+        /* 1. Hover */
+        .btn:hover {
+            background: orange;
+            color: white;
+        }
+
+        /* 2. Active */
+        .btn:active {
+            background: red;
+            color: white;
+        }
+
+        /* 3. Focus */
+        input:focus {
+            border: 2px solid blue;
+            outline: none;
+        }
+
+        /* 4. Visited */
+        a:visited {
+            color: purple;
+        }
+
+        /* 5. nth-child */
+        li:nth-child(odd) {
+            background: #f2f2f2;
+        }
+        li:nth-child(even) {
+            background: #e0e0e0;
+        }
+
+        /* 6. Checked */
+        input[type="checkbox"]:checked + label {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>1. :hover & :active</h2>
+    <button class="btn">วางเมาส์ / กดคลิก</button>
+
+    <h2>2. :focus</h2>
+    <input type="text" placeholder="คลิกแล้วลองพิมพ์ดู">
+
+    <h2>3. :visited</h2>
+    <a href="https://google.com" target="_blank">คลิกลิงก์นี้ (แล้วกลับมา)</a>
+
+    <h2>4. :nth-child()</h2>
+    <ul>
+        <li>รายการ 1</li>
+        <li>รายการ 2</li>
+        <li>รายการ 3</li>
+        <li>รายการ 4</li>
+        <li>รายการ 5</li>
+    </ul>
+
+    <h2>5. :checked</h2>
+    <input type="checkbox" id="cb1">
+    <label for="cb1">เลือกฉัน</label>
+
+</body>
+</html>
