@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block-example {
+            display: block;
+            padding: 10px;
+            margin-bottom: 5px;
+            background: #c8e6ff;
+        }
+
+        .inline-example span{
+            display: inline;
+            padding: 5px;
+            margin-right: 5px;
+            background: #ffc8e6;
+        }
+
+        .inline-block-example {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            background: #d2ffd2;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid #4caf50;
+        }
+
+        .box {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #d2ffd2;
+            border:  2px solid #4caf50;
+            font-size: 20px;
+        }
+        /* ซ่อนแบบหายไปจาก layout */
+        .none {
+            display: none;
+        }
+        /* ซ่อนแต่ยังจองพื้นที่อยู่ */
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="block-example">
+        Block 1
+    </div>
+    <div class="block-example">
+        Block 2
+    </div>
+    <br>
+    <br>
+    <div class="inline-example">
+        <span>Inline 1</span>
+        <span>Inline 2 Inline 2</span>
+        <span>Inline 3</span>
+    </div>
+    <br>
+    <br>
+    <div class="inline-block-example">
+        Box A
+    </div>
+    <div class="inline-block-example">
+        Box B Box B
+    </div>
+    <div class="inline-block-example">
+        Box C   
+    </div>
+    <br>
+    <br>
+    <h2>แสดงผลปกติ</h2>
+    <div class="box">
+        Box 1 ปกติ
+    </div>
+    <h2>display: none; หายไปจากหน้าเว็บ</h2>
+    <div class="box none">
+        Box 2 display:none; หายไป
+    </div>
+    <div class="box">
+        Box 3 จะชิดขึ้นมาทันทีเพราะ Box 2 หายไป
+    </div>
+    <h2>visibility: hidden; ซ่อนแต่ยังคงที่ในหน้าเว็บ</h2>
+    <div class="box hidden">
+        Box 4 visibility:hidden; ซ่อนแต่ยังคงที่ในหน้าเว็บ
+    </div>
+    <div class="box">
+        Box 5 จะไม่ชิดขึ้นมา เพราะ Box 4 ยังครองที่อยู่ในหน้าเว็บ
+</body>
+</html>

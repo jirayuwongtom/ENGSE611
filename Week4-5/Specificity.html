@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Element selector -> คะแนนน้อยสุด */
+        p {
+            color: yellow;
+        }
+        /* class selector -> ชนะ Element */
+        .text {
+            color: green;
+        }
+        /* ID sclector -> ชนะ class */
+        #mainText {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h2>CSS Specificity - ตัวอย่างการชนกันทั้ง 4 แบบ</h2>
+    <p id="mainText" class="text" style="color: red;">
+        ข้อความนี้มี style ชนกันทั้ง 4 แบบ
+    </p>
+</body>
+</html>

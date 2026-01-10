@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ตัวอย่าง boder พื้นฐาน */
+        .border-list {
+            border: 2px solid blue;
+            padding: 20px;
+            height: 80px;
+            width: 300px;
+        }
+        /* แบบ 1: โค้งทุกมุมเท่ากัน */
+        .radius-20 {
+            border-radius: 20px;
+        }
+        /* แบบ 2: วงรี (โค้งมาก) */
+        .radius-50 {
+            border-radius: 50px;
+        }
+        /* แบบ 3: มุมบนโค้ง แต่ล่างเป็นเหลี่ยม */
+        .radius-top {
+            border-radius: 30px 30px 0 0;
+        }
+        /* แบบ 4: วงกลมเต็ม (ถ้ากว้าง = สูง) */
+        .circle{
+            width: 120px;
+            height: 120px;
+            background-color: lightblue;
+            border-radius: 50%;
+        }
+        /*เงาธรรมดา*/
+        .box-shadow-example {
+            width: 150px;
+            height: 150px;
+            background-color: lightgray;
+            box-shadow: 10px 10px 5px rgba(0,0,0,0.4);
+        }
+        /*เงาฟุ้งนุ่ม*/
+        .box-shadow-example1 {
+            width: 150px;
+            height: 150px;
+            background-color: lightgray;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+        }
+        /*เงาทิศทางลงล่าง*/
+        .box-shadow-example2 {
+            width: 150px;
+            height: 150px;
+            background-color: lightgray;
+            box-shadow: 0px 12px 8px rgba(0,0,0,0.25);
+        }
+        /*เงาด้านใน*/
+        .box-shadow-example3 {
+            width: 150px;
+            height: 150px;
+            background-color: lightgray;
+            box-shadow: inset 0px 0px 15px rgba(0,0,0,0.4);
+        }
+        /*เงาหลายชั้น*/
+        .box-shadow-example4 {
+            width: 150px;
+            height: 150px;
+            background-color: lightgray;
+            box-shadow: multi-layered;
+        }
+    </style>
+</head>
+<body>
+    <div class="border-list">
+        This div has a standard border.
+    </div><br><br>
+    <div class="border-list radius-20" style="margin-top: 20px;">
+        This div has a border with rounded corners.
+    </div><br><br>
+    <div class="border-list radius-50" style="margin-top: 20px;">
+        This div has a border with more rounded corners.
+    </div><br><br>
+    <div class="border-list radius-top" style="margin-top: 20px;">
+        This div has a border with rounded top corners only.
+    </div><br><br>
+    <div class="circle" style="margin-top: 20px;"></div>
+    <br><br>
+    <div class="box-shadow-example" style="margin-top: 20px;"></div>
+    <br><br>        
+    <div class="box-shadow-example1" style="margin-top: 20px;"></div>
+    <br><br>        
+    <div class="box-shadow-example2" style="margin-top: 20px;"></div>
+    <br><br>    
+    <div class="box-shadow-example3" style="margin-top: 20px;"></div>
+    <br><br>
+    <div class="box-shadow-example4" style="margin-top: 20px;"></div>
+
+    
+</body>
+</html>

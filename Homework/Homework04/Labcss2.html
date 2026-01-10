@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labcss2</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: 'TH SarabunPSK', sans-serif;
+        }
+        h2{
+            text-align: center;
+        }
+        h3{
+            font-size: 25px;
+        }
+        h4{
+            font-size: 16px;
+            font-weight: 300;
+        }
+        .grid-container{
+            display:grid;
+            grid-template-columns: 25% 75%;
+            height: 100%;
+        }
+        aside{
+            grid-row: 1/2;
+            grid-column: 1/2;
+            background-color: #2383ff;
+            padding: 10px;
+            color: white;
+        }
+        main{
+            grid-row: 1/2;
+            grid-column: 2/3;
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+        @media(max-width: 600px){
+            .grid-container{
+                grid-template-columns: 1fr;
+            }
+            aside{
+                grid-row: 1 / 2;
+                grid-column: 1 / 2;
+            }
+            main{
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>โจทย์ที่ 2 : 2-Column Layout ด้วย CSS Grid</h2>
+    <div class="grid-container">
+        <aside>
+            <h3>เมนู</h3>
+            <h4>About</h4>
+            <h4>Services</h4>
+            <h4>Contact</h4>
+        </aside>
+        <main>
+            <h3>ยินดีต้อนรับ</h3>
+            <h4>นี่คือเนื้อหาหลักของเว็บไซต์</h4>
+            <h4>ลองทดสอบย่อ-ขยายหน้าจอเพื่อดู Responsive Layout</h4>
+        </main>
+    </div>
+</body>
+</html>

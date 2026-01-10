@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            height: 1200px; /*เพื่อให้เห็น fixed ตอนเลื่อนหน้า*/
+        }
+        .box {
+            width: 200px;
+            height: 80px;
+            background: #4da3ff;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 18px;
+        }
+        /* static ค่าเริ่มต้น ไม่สามารถขยับด้วย top/left*/
+        .static-box {
+            position: static;
+            background: #6c8cff;
+        }
+        /* relative ทำให้ ขยับจากตำแหน่งเดิม*/
+        .relative-box {
+            position: relative;
+            top: 20px; /*ขยับลง*/
+            left: 20px; /*ขยับขึ้น*/
+            background: #ff8c42;
+        }
+        /* absolute ลอบอิสระ อ้างอิง *กล่องแม่ที่เป็น relative* */
+        .relative-parent {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            background: #ddd;
+            margin-bottom: 40px;
+            border: 2px dashed gray;
+        }
+        .absolute-box {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            background: red;
+        }
+        /* fixed ติดอยู่บนหน้าจอ ไม่เลื่อนตาม scroll */
+        .fixed-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <!--static-->
+    <div class="box static-box">
+        position: static<br>(อยู่ตำแหน่งปกติ)
+    </div>
+    <!--relative-->
+    <div class="box relative-box">
+        position: relative<br>(ขยับจากตำแหน่งเดิม)
+    </div>
+    <!-- absolute --><br>
+    <h2>Absolute (ลอยบน parent)</h2>
+    <div class="relative-parent">
+        <div class="box absolute-box">
+            absolute<br>top:20px; right:10px;
+        </div>
+    </div>
+    <!--fixed-->
+    <div class="box fixed-box">
+        position: fixed<br>(ติดหน้าจอ)
+    </div>  
+</body>
+</html>
