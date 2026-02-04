@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Tahoma,  sans-serif;
+            background: #f5f5f5;
+        }
+        header {
+            background: #2c3e50;
+            color: #ffffff;
+            text-align: center; /* มือถือ จัดกลาง */
+            padding: 15px;
+        }
+        nav {
+            display: flex;
+            flex-direction: column; /* มือถือ เมนูเรียงลง */
+            gap: 10px;
+            margin-top: 10px;
+        }
+        nav a {
+            background: #34495e;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        main {
+            padding: 15px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        footer {
+            background: #dddddd;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+        /*===================================
+            2. แท็บเล็ตขึ้นไป
+        ===================================*/
+        @media (min-width: 768px) {
+            header {
+                text-align: left; /*จอใหญ่ขึ้น ชิดซ้าย*/
+                padding: 20px;
+            }
+            nav {
+                flex-direction: row; /* เมนูเรียงแนวนอน*/
+            }
+            main {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+        }
+         /*===================================
+            2. คอมพิวเตอร์ขึ้นไป
+        ===================================*/
+        @media (min-width: 1024px) {
+            body {
+                max-width: 1200px;  /*จำกัดความกว้าง*/
+                margin: 0 auto;     /*จัดกลางหน้าจอ*/
+            }
+            header {
+                padding: 30px 40px;
+            }
+            main {
+                grid-template-columns: repeat(3,1fr); /* 3 คอลัม*/
+            }
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<!-- ส่วนหัวเว็บไซต์-->
+<header>
+    <h1>Mobile-Fist Approach</h1>
+    <p>เริ่มออกแบบจากมือถือ</p>
+    <!-- เมนูนำทาง -->
+    <nav>
+        <a href="#">หน้าแรก</a>
+        <a href="#">เกี่ยวกับ</a>
+        <a href="#">บทเรียน</a>
+        <a href="#">ติดต่อ</a>
+    </nav>
+</header>
+<body>
+    <!-- เนื้อหาหลัก -->
+    <main>
+        <div class="card">
+            <h3>แนวคิด Mobile-First</h3>
+            <p>เริ่มออกแบบและเขียนโค้ดสำหรับหน้าจอมือถือก่อนจากนั้นจึงเพิ่มเงื่อนไขสำหรับหน้าจอที่ใหญ่ขึ้น</p>
+        </div>
+        <div class="card">
+            <h3>ข้อดี</h3>
+            <ul>
+                <li>เว็บไซต์โหลดเร็ว</li>
+                <li>เหมาะกับผู้ใช้มือถือ</li>
+                <li>โค้ดเป็นระเบียบ</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>การใช้งานจริง</h3>
+            <p>ใช้ร่วมกับ Responsive Design และเป็นมาตรฐานของการพัฒนาเว็บยุคปัจจุบัน</p>
+        </div>
+        
+    </main>
+    <img src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVyJTIwNGt8ZW58MHx8MHx8fDA%3D" alt="image">
+    <!-- ส่วนท้าย -->
+    <footer>
+        รายวิชา ENGSE611 การพัฒนาเว็บด้วยเทคโนโลยีสมัยใหม่
+    </footer>
+</body>
+</html>

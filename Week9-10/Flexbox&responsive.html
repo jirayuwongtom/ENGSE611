@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* กล่องแม่ */
+        .flex-container {
+            display: flex;
+            flex-direction: column; /*มือถือเรียงแนวตั้ง*/
+            gap: 15px;
+            background: #e9edf2;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        /* กล่องลูก */
+        .item {
+            background: #0f2557;
+            color: #ffffff;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        /* แท็บเล็ตขึ้นไป */
+        @media (min-width:768px) {
+            .flex-container {
+                flex-direction: row; /* เรียงแนวนอน */
+                flex-wrap: wrap;    /* อนุญาติให้ตัดบรรทัด */
+            }
+            .item {
+                flex: 1 1 45%; /* 2 กล่องต่อแถว */
+            }
+        }
+        /* คอมพิวเตอร์ขึ้นไป */
+        @media (min-width:1024px) {
+            .flex-container {
+                flex-wrap: nowrap;    /* ไม่ตัดบรรทัด */
+            }
+            .item {
+                flex: 1; /* ทุกกล่องกว้างเท่ากัน */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Flexbox กับ Responsive</h1>
+    <div class="flex-container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+    </div>
+</body>
+</html>

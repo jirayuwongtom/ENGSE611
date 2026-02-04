@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*Grid Container มือถือเป็นหลัก*/
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            background: #e9edf2;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        /*กล่องเนื้อหา*/
+        .item {
+            background: #0f2557;
+            color: #ffffff;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        /* แท็บเล็ตขึ้นไป */
+        @media (min-width:768px) {
+            .grid-container {
+                grid-template-columns: repeat(2,1fr); /* 2 คอลัมน์*/
+            }
+        }
+        /* คอมพิวเตอร์ขึ้นไป */
+        @media (min-width:1024px) {
+            .grid-container {
+                grid-template-columns: repeat(4 , 1fr); /* 4 คอลัมน์ */
+                max-width: 1200px;
+                margin: 0 auto; /*จัดกลางหน้าจอ*/
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Grid Responsive</h1>
+    <div class="grid-container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+    </div>
+</body>
+</html>
