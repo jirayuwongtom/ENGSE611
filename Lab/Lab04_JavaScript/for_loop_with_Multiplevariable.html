@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi For Loop Example</title>
+</head>
+<body>
+
+    <h3>ผลลัพธ์บนหน้าเว็บ:</h3>
+    <pre id="output">กำลังรัน...</pre>
+    <p><strong>หมายเหตุ:</strong> ผลลัพธ์จะถูกแสดงใน <span style="color: red;">Console จริง</span> ด้วย</p>
+
+    <script>
+        let output = "";
+
+        // เริ่มต้น i = 0 และ j = 100
+        // เงื่อนไขคือ i ต้องไม่เท่ากับ j (i != j)
+        // ทุกรอบ i จะเพิ่มขึ้น 5 และ j จะลดลง 5
+        for (let i = 0, j = 100; i != j; i += 5, j -= 5) {
+            output += `i = ${i}, j = ${j}\n`;
+            console.log("i = %d, j = %d", i, j); // แสดงผลใน Console จริง
+        }
+
+        output += "Loop ended";
+        console.log("Loop ended"); // แสดงผลใน Console จริง
+
+        // นำข้อความที่รวบรวมได้ไปแสดงบนหน้าเว็บ
+        document.getElementById("output").textContent = output;
+    </script>
+
+</body>
+</html>

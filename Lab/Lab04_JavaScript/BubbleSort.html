@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output"></div> 
+    <button class="run-btn" onclick="runBubbleSort()">Run Bubble Sort</button>
+
+    <script>
+        function runBubbleSort() {
+            let numbers = [30, 27, 84, 36, 24, 2, 74, 37, 8, 50];
+            let n = numbers.length;
+
+            console.clear();
+            console.log("Bubble Sort Running...");
+            console.log("Original:", numbers.join(" "));
+
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    
+                    console.log(`เปรียบเทียบ ${numbers[j]} กับ ${numbers[j + 1]}`);
+
+                    if (numbers[j] > numbers[j + 1]) {
+                        console.log(`สลับ: ${numbers[j]} <-> ${numbers[j + 1]}`);
+                        let temp = numbers[j];
+                        numbers[j] = numbers[j + 1];
+                        numbers[j + 1] = temp;
+                    }
+                }
+            }
+            document.getElementById("output").innerHTML = 
+            "<strong>Output:</strong><br><br>Sorted: " + numbers.join(" ");
+            console.log("ผลลัพธ์สุดท้าย:", numbers.join(" "));
+    }
+    </script>
+</body>
+</html>

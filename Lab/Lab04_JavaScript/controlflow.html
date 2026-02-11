@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outoutBox">ผลลัพธ์จะแสดงที่นี่</div>
+    <button onclick="runDemo()">Run Code</button>
+    <script>
+        function runDemo() {
+            const output = [];
+            //ค่าเริ่มต้น
+            let score = 72;
+            //เงื่อนไข
+            if (score >= 50) {
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else {
+                output.push("ผลสอบ : ไม่ผ่าน");
+                console.log("ผลสอบ : ไม่ผ่าน");
+            }
+            //วน loop 5 รอบ
+            for (let i = 0; i < 5; i++){
+                output.push("รอยที่ :" + i);
+                console.log("รอยที่ :" , i);
+            }
+            document.getElementById("outputBox").textContent = output.join("\n");
+        }
+    </script>
+</body>
+</html>

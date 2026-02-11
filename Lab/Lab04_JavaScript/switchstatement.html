@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Switch Case</title>
+</head>
+<body>
+
+    <input type="number" id="dayInput" placeholder="1-7" min="1" max="7">
+    <button onclick="convertDay()">แปลงค่า</button>
+    <div id="output">ผลลัพธ์จะแสดงที่นี่...</div>
+
+    <script>
+        function convertDay() {
+            // รับค่าจาก input และแปลงเป็นตัวเลข
+            let day = Number(document.getElementById("dayInput").value);
+            let text = "";
+
+            // ตรวจสอบเงื่อนไขด้วย switch case
+            switch (day) {
+                case 1:
+                    text = "วันจันทร์";
+                    break;
+                case 2:
+                    text = "วันอังคาร";
+                    break;
+                case 3:
+                    text = "วันพุธ";
+                    break;
+                case 4:
+                    text = "วันพฤหัสบดี";
+                    break;
+                case 5:
+                    text = "วันศุกร์";
+                    break;
+                case 6:
+                    text = "วันเสาร์";
+                    break;
+                case 7:
+                    text = "วันอาทิตย์";
+                    break;
+                default:
+                    text = "กรุณากรอกเลข 1-7 เท่านั้น";
+            }
+
+            // แสดงผลบนหน้าเว็บ
+            document.getElementById("output").textContent = text;
+
+            // แสดงผลใน console
+            console.log("เลขที่กรอก:", day);
+            console.log("ชื่อวัน:", text);
+        }
+    </script>
+</body>
+</html>

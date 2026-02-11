@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeCheck</title>
+</head>
+<body>
+    <pre id="outputBox"></pre>
+    <button onclick="run()">Run Code</button>
+    <script>
+        function run() {
+            console.clear();
+            const output = [];
+            let score = 88;
+            if (score >= 80){
+                output.push("คะแนนที่ได้ : " + score);
+                console.log("คะแนนที่ได้ :", score);
+                output.push("เกรด : A");
+                console.log("เกรด : A");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else if (score >= 70) {
+                output.push("คะแนนที่ได้ : " + score);
+                console.log("คะแนนที่ได้ :", score);
+                output.push("เกรด : B");
+                console.log("เกรด : B");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else if (score >= 60) {
+                output.push("คะแนนที่ได้ : " + score);
+                console.log("คะแนนที่ได้ :", score);
+                output.push("เกรด : C");
+                console.log("เกรด : C");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else if (score >= 50) {
+                output.push("คะแนนที่ได้ : " + score);
+                console.log("คะแนนที่ได้ :", score);
+                output.push("เกรด : D");
+                console.log("เกรด : D");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else{
+                output.push("คะแนนที่ได้ : " + score);
+                console.log("คะแนนที่ได้ :", score);
+                output.push("เกรด : F");
+                console.log("เกรด : F");
+                output.push("ผลสอบ : ไม่ผ่าน");
+                console.log("ผลสอบ : ไม่ผ่าน");
+            }
+            document.getElementById("outputBox").textContent = output.join("\n");
+        }
+    </script>
+</body>
+</html>

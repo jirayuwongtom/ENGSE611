@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทำงานกับ String ขั้นสูง</title>
+
+    <style>
+        body {
+            font-family: "Prompt", sans-serif;
+            padding: 25px;
+            background: #f7f7f7;
+        }
+
+        h2 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #0078ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+
+        #output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            min-height: 260px;
+            border-left: 5px solid #00c853;
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>การทำงานกับ String ขั้นสูง ✨</h2>
+<p>กดปุ่มเพื่อรันโค้ด และดูผลลัพธ์ทั้งบนหน้าเว็บและใน Console</p>
+
+<pre id="output">ผลลัพธ์จะแสดงที่นี่…</pre>
+<button onclick="runStringDemo()">Run Code</button>
+
+<script>
+function runStringDemo() {
+    const out = [];
+
+    let text = 'JavaScript เจ๋งมาก';
+    let firstName = 'สมชาย';
+
+    // Template Literal
+    out.push(`สวัสดี ${firstName}!`);
+    console.log(`สวัสดี ${firstName}!`);
+    // String Methods
+    out.push("ความยาว: " + text.length);
+    console.log("ความยาว:", text.length);
+    out.push("ตัวใหญ่: " + text.toUpperCase());
+    console.log("ตัวใหญ่:", text.toUpperCase());
+    out.push("ตัวเล็ก: " + text.toLowerCase());
+    console.log("ตัวเล็ก:", text.toLowerCase());
+    out.push('มี "Java"? ' + text.includes('Java'));
+    console.log('มี "Java"?', text.includes('Java'));
+    out.push('ตำแหน่ง "Script": ' + text.indexOf('Script'));
+    console.log('ตำแหน่ง "Script":', text.indexOf('Script'));
+    out.push("ตัดคำ (0-4): " + text.slice(0, 4));
+    console.log("ตัดคำ (0-4):", text.slice(0, 4));
+    out.push("แทนที่: " + text.replace('เจ๋ง', 'สุดยอด'));
+    console.log("แทนที่:", text.replace('เจ๋ง', 'สุดยอด'));
+    // แสดงผลบนหน้าเว็บ
+    document.getElementById("output").textContent = out.join("\n");
+
+
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoopPractice</title>
+</head>
+<body>
+    <pre id="outputBox"></pre>
+    <button onclick="run()">Run Code</button>
+    <script>
+        function run() {
+            console.clear();
+            const output = [];
+            let maxNumber = 20;
+            for (let i = 0; i <= maxNumber; i++) {
+                if (i % 2 === 0) {
+                    output.push(i + " (คู่)");
+                    console.log(i , "(คู่)")
+                }else{
+                    output.push(i + " (คี่)");
+                    console.log(i , "(คี่)")
+                }
+            }
+            for (let i = 0; i <= maxNumber; i += 2) {
+                output.push("นับทีละ 2 : " + i);
+                console.log("นับทีละ 2 : " , i);
+            }
+
+            for (let i = maxNumber; i >= 0; i--) {
+                output.push("ถอยหลัง : " + i);
+                console.log("ถอยหลัง : " , i);
+            }
+            document.getElementById("outputBox").textContent = output.join("\n");
+        }
+        
+    </script>
+    
+</body>
+</html>

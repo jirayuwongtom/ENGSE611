@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre id="output">ผลลัพธ์จะแสดงที่นี่...</pre>
+    <button onclick="runOperators()">Run Code</button>
+
+    <script>
+        function runOperators() {
+            const out = [];
+
+            // 1) Arithmetic (คณิตศาสตร์)
+            let a = 10, b = 3;
+            out.push("1) Arithmetic");
+            out.push("10 + 3 = " + (a + b));
+            out.push("10 - 3 = " + (a - b));
+            out.push("10 * 3 = " + (a * b));
+            out.push("10 / 3 = " + (a / b));
+            out.push("10 % 3 = " + (a % b));
+            out.push("--------------------");
+
+            // 2) Comparison (เปรียบเทียบ)
+            out.push("2) Comparison");
+            out.push("5 > 3: " + (5 > 3));
+            out.push("5 == '5': " + (5 == '5')); // ตรวจสอบแค่ค่า
+            out.push("5 === '5': " + (5 === '5')); // ตรวจสอบค่าและชนิดข้อมูล
+            out.push("--------------------");
+
+            // 3) Logical (ตรรกะ)
+            out.push("3) Logical");
+            out.push("true && false: " + (true && false));
+            out.push("true || false: " + (true || false));
+            out.push("!true: " + (!true));
+            out.push("--------------------");
+
+            // 4) Assignment (กำหนดค่า)
+            let x = 10;
+            out.push("4) Assignment");
+            out.push("x = 10 -> x += 5 = " + (x += 5)); // x กลายเป็น 15
+            out.push("x -= 3 = " + (x -= 3));           // 15 - 3 เหลือ 12
+            out.push("x *= 2 = " + (x *= 2));           // 12 * 2 กลายเป็น 24
+            out.push("--------------------");
+
+            // 5) Increment / Decrement (เพิ่ม/ลดค่า)
+            let y = 5;
+            out.push("5) Increment / Decrement");
+            out.push("y = 5 -> y++ = " + (y++));        // แสดงค่าเดิมก่อน (5) แล้วค่อยเพิ่ม
+            out.push("หลัง y++ ค่า y = " + y);           // ค่าตอนนี้เป็น 6
+            out.push("y-- = " + (y--));                 // แสดงค่าเดิมก่อน (6) แล้วค่อยลด
+            out.push("หลัง y-- ค่า y = " + y);           // ค่ากลับมาเป็น 5
+            out.push("--------------------");
+
+            // 6) Ternary (เงื่อนไขแบบย่อ)
+            let age = 18;
+            let result = age >= 18 ? "ผู้ใหญ่" : "เยาวชน";
+            out.push("6) Ternary Operator");
+            out.push("age = 18 -> result = " + result);
+            out.push("--------------------");
+
+            // แสดงผลบนหน้าเว็บ
+            document.getElementById("output").textContent = out.join("\n");
+
+            // แสดงผลใน Console
+            console.clear();
+            out.forEach(line => console.log(line));
+        }
+    </script>
+</body>
+</html>

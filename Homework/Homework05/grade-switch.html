@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeSwitch</title>
+</head>
+<body>
+    <pre id="outputBox"></pre>
+    <button onclick="run()">Run Code</button>
+    <script>
+        function run() {
+            console.clear();
+            const output = [];
+            let score = Math.floor(Math.random() * 100) + 1;
+            let grade = "";
+            let text = "";
+
+            if (score >= 80){
+                grade = "A";
+                output.push("คะแนนที่สุ่มได้ : " + score);
+                console.log("คะแนน :", score);
+                output.push("เกรด : A");
+                console.log("เกรด : A");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else if (score >= 70) {
+                grade = "B";
+                output.push("คะแนนที่สุ่มได้ : " + score);
+                console.log("คะแนน :", score);
+                output.push("เกรด : B");
+                console.log("เกรด : B");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else if (score >= 60) {
+                grade = "C";
+                output.push("คะแนนที่สุ่มได้ : " + score);
+                console.log("คะแนน :", score);
+                output.push("เกรด : C");
+                console.log("เกรด : C");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else if (score >= 50) {
+                grade = "D";
+                output.push("คะแนนที่สุ่มได้ : " + score);
+                console.log("คะแนน :", score);
+                output.push("เกรด : D");
+                console.log("เกรด : D");
+                output.push("ผลสอบ : ผ่าน");
+                console.log("ผลสอบ : ผ่าน");
+            }else{
+                grade = "F";
+                output.push("คะแนนที่สุ่มได้ : " + score);
+                console.log("คะแนน :", score);
+                output.push("เกรด : F");
+                console.log("เกรด : F");
+                output.push("ผลสอบ : ไม่ผ่าน");
+                console.log("ผลสอบ : ไม่ผ่าน");
+            }
+
+            switch (grade) {
+                case "A":
+                    text = "ยอดเยี่ยมมาก";
+                    break;
+                case "B":
+                    text = "ดีมาก รักษามาตรฐานไว้";
+                    break;
+                case "C":
+                    text = "ผ่านเกณฑ์ระดับดี";
+                    break;
+                case "D":
+                    text = "พอใช้ แต่ควรพัฒนาเพิ่ม";
+                    break;
+                case "F":
+                    text = "ต้องลงทะเบียนเรียนใหม่";
+                    break;
+            }
+            output.push("คำอธิบาย : " + text);
+            console.log("คำอธิบาย : " , text);
+            document.getElementById("outputBox").textContent = output.join("\n");
+        }
+    </script>
+</body>
+</html>

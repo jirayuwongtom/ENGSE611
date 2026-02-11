@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre id="output"></pre>
+    <script>
+        let out = "";
+
+        // Fruits
+        let fruits = ["Apple", "Banana", "Orange", "Grape", "Lemon"];
+        out += "List of fruits\n";
+        console.log("List of fruits");
+
+        for (let i = 0; i < fruits.length; i++) {
+            out += `${i + 1}. ${fruits[i]}\n`;
+            console.log("%d. %s", i + 1, fruits[i]);
+        }
+
+        out += "\nList of programming languages (reversed)\n";
+        console.log("List of programming languages (reversed)");
+
+        // Languages (reverse order)
+        let languages = ["GO", "JavaScript", "PHP", "Python", "Ruby"];
+        let count = 1;
+
+        for (let i = languages.length - 1; i >= 0; i--) {
+            out += `${count}. ${languages[i]}\n`;
+            console.log("%d. %s", count, languages[i]);
+            count++;
+        }
+
+        // Show on web
+        document.getElementById("output").textContent = out;
+</script>
+</body>
+</html>
