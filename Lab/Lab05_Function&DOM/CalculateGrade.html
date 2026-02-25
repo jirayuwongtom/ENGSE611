@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculateGrade(score) {
+            if (score >= 80) {
+                return "A";
+            } else if (score >= 70) {
+                return "B";
+            } else if (score >= 60) {
+                return "C";
+            } else if (score >= 50) {
+                return "D";
+            } else {
+                return "F";
+            }
+        }
+
+        function runGrade() {
+            const output = [];
+            let score = Number(document.getElementById("scoreInput").value);
+
+            //ตรวจค่าว่างหรือผิด
+            if (isNaN(score) || score < 0 || score > 100) {
+                output.push("กรุณนกรอกคะแนน 0 - 100");
+                document.getElementById("outputBox").textContent = output.join("\n");
+                return;
+            }
+
+            let grade = calculateGrade(score);
+            output.push("คะแนน : " + score);
+            output.push("เกรดที่ได้ : " + grade);
+
+            console.log("คะแนน : " , score);
+            console.log("เกรดที่ได้ : " , grade);
+            document.getElementById("outputBox").textContent = output.join("\n");
+        }
+    </script>
+</head>
+<body>
+    <p><b>กรอกคะแนน</b></p>
+    <input type="number" id="scoreInput" placeholder="0 - 100">
+    <button onclick="runGrade()">คำนวณเกรด</button><br><br>
+    <div id="outputBox">ผลลัพธ์จะปรากฎที่นี่</div>
+</body>
+</html>
