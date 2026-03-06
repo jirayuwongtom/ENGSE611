@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Delegation (Simple)</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 24px;
+    }
+
+    h1 { font-size: 22px; }
+    p { color: #555; margin-top: 0; }
+
+    /* ปุ่มควบคุม */
+    .toolbar button {
+      cursor: pointer;
+      padding: 6px 14px;
+      margin-right: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    #addRed {
+      background: #e74c3c;
+      border-color: #c0392b;
+    }
+
+    #addBlue {
+      background: #3498db;
+      border-color: #2980b9;
+    }
+
+    #addRed:hover { background: #c0392b; }
+    #addBlue:hover { background: #2980b9; }
+
+    /* แสดงปุ่ม dynamic */
+    .box {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 12px;
+      min-height: 80px;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      margin: 4px;
+      border-radius: 3px;
+      font-size: 13px;
+      color: #fff;
+    }
+
+    .badge-red { background: #e74c3c; }
+    .badge-blue { background: #3498db; }
+
+    .badge-active {
+      filter: brightness(0.9);
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.12);
+    }
+
+    .badge-animate {
+      animation: wiggle 0.3s ease-in-out 0s 3;
+    }
+
+    @keyframes wiggle {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-2px); }
+      100% { transform: translateX(0); }
+    }
+
+    .close {
+      margin-left: 8px;
+      font-size: 11px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ตัวอย่าง Event Delegation</h1>
+  <p>ปุ่มที่สร้างขึ้นจะนับลำดับต่อเนื่อง (Global Counter)</p>
+
+  <div class="toolbar">
+    <button id="addRed">เพิ่มปุ่มแดง</button>
+    <button id="addBlue">เพิ่มปุ่มน้ำเงิน</button>
+  </div>
+
+  <div id="badgeContainer" class="box"></div>
+
+  <div class="hint">
+    คลิก = toggle | ดับเบิ้ลคลิก = animate | คลิก 'x' = ลบปุ่ม
+  </div>
+
+  <script>
+    const addRedBtn = document.getElementById("addRed");
+    const addBlueBtn = document.getElementById("addBlue");
+    const container = document.getElementById("badgeContainer");
+
+    let globalCount = 0; // นับปุ่มต่อเนื่องทุกสี
+
+    // ฟังก์ชันสร้าง badge
+    function createBadge(type) {
+      globalCount++; // นับเลขเพิ่มทีละ 1
+
+      const badge = document.createElement("span");
+      badge.classList.add("badge");
+
+      if (type === "red") {
+        badge.classList.add("badge-red");
+        badge.textContent = "red #" + globalCount;
+      } else {
+        badge.classList.add("badge-blue");
+        badge.textContent = "blue #" + globalCount;
+      }
+
+      const close = document.createElement("span");
+      close.classList.add("close");
+      close.textContent = "x";
+      close.dataset.action = "remove";
+      badge.appendChild(close);
+
+      container.appendChild(badge);
+    }
+
+    addRedBtn.addEventListener("click", () => createBadge("red"));
+    addBlueBtn.addEventListener("click", () => createBadge("blue"));
+
+    // Event Delegation
+    container.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (target.dataset.action === "remove") {
+        target.closest(".badge").remove();
+        return;
+      }
+
+      if (target.classList.contains("badge")) {
+        target.classList.toggle("badge-active");
+      }
+    });
+
+    container.addEventListener("dblclick", (event) => {
+      const badge = event.target.closest(".badge");
+      if (!badge) return;
+
+      badge.classList.remove("badge-animate");
+      void badge.offsetWidth;
+      badge.classList.add("badge-animate");
+    });
+  </script>
+
+</body>
+</html>

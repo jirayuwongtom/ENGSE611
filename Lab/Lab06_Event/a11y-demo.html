@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Accessibility (a11y) Event Demo</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f3f4f6;
+    padding: 30px;
+  }
+
+  h1 { margin-top: 0; }
+  section { margin-bottom: 50px; }
+
+  /* ---- Accessible Button ---- */
+  .btn-like {
+    padding: 10px 14px;
+    background: #2563eb;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    width: fit-content;
+    margin-bottom: 10px;
+  }
+  .btn-like:focus {
+    outline: 3px solid #93c5fd;
+  }
+
+  /* ---- Modal ---- */
+  .modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    background: rgba(0,0,0,.45);
+  }
+  .modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: white;
+    padding: 20px 26px;
+    border-radius: 8px;
+    min-width: 240px;
+  }
+  .modal-content:focus {
+    outline: 3px solid #fbbf24;
+  }
+
+  /* ---- Menu ---- */
+  #menu {
+    list-style: none;
+    padding-left: 0;
+  }
+  #menu li {
+    padding: 8px 12px;
+    background: #e5e7eb;
+    margin-bottom: 4px;
+    border-radius: 6px;
+  }
+  #menu li:focus {
+    outline: 3px solid #10b981;
+    background: #d1fae5;
+  }
+</style>
+</head>
+<body>
+
+<h1>Demo: Accessibility (a11y) + Events</h1>
+
+<!-- ------------------------------------------------------ -->
+<!-- 1) Accessible Button -->
+<!-- ------------------------------------------------------ -->
+<section>
+  <h2>1) Accessible Button (div → button)</h2>
+  <div id="myBtn" class="btn-like">เปิดเมนู (กด Enter/Space ได้)</div>
+</section>
+
+<!-- ------------------------------------------------------ -->
+<!-- 2) Modal with Focus Trap -->
+<!-- ------------------------------------------------------ -->
+<section>
+  <h2>2) Modal with Focus Trap + ESC Close</h2>
+
+  <button id="openModal" style="padding: 8px 14px;">เปิด Modal</button>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" tabindex="0">
+      <h3>ตั้งค่า</h3>
+      <p>ตัวอย่าง Modal ที่รองรับคีย์บอร์ด</p>
+      <button id="closeModal">ปิด Modal</button>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------ -->
+<!-- 3) Menu Keyboard Navigation -->
+<!-- ------------------------------------------------------ -->
+<section>
+  <h2>3) Keyboard Menu Navigation (Arrow Up/Down)</h2>
+  <ul id="menu" role="listbox">
+    <li tabindex="0">หน้าแรก</li>
+    <li tabindex="0">โปรไฟล์</li>
+    <li tabindex="0">ตั้งค่า</li>
+  </ul>
+</section>
+
+
+<script>
+// ======================================================
+// 1) Accessible Button
+// ======================================================
+const myBtn = document.querySelector('#myBtn');
+
+// ให้ Screen Reader รู้ว่าเป็นปุ่ม + ใช้คีย์บอร์ดได้
+myBtn.setAttribute('role', 'button');
+myBtn.setAttribute('tabindex', '0');
+myBtn.setAttribute('aria-label', 'เปิดเมนูหลัก');
+
+myBtn.addEventListener('click', () => {
+  alert('ปุ่มนี้ทำงานแล้ว!');
+});
+
+// Keyboard: Enter หรือ Space → ทำงานเหมือนคลิก
+myBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    myBtn.click();
+  }
+});
+
+
+// ======================================================
+// 2) Modal with Focus Trap
+// ======================================================
+const openBtn = document.querySelector('#openModal');
+const closeBtn = document.querySelector('#closeModal');
+const modal = document.querySelector('#modal');
+
+let lastFocusedElement = null;
+
+openBtn.addEventListener('click', () => {
+  lastFocusedElement = document.activeElement;
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  closeBtn.focus();
+});
+
+function closeModal() {
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+closeBtn.addEventListener('click', closeModal);
+
+// ปิดด้วย ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('active')) {
+    closeModal();
+  }
+});
+
+// Focus Trap
+modal.addEventListener('keydown', (e) => {
+  const focusable = modal.querySelectorAll('button, [tabindex="0"]');
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (e.key === 'Tab') {
+    // SHIFT + TAB → ถ้าหลุดก่อน element แรก
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    }
+    // TAB → ถ้าหลุดหลัง element สุดท้าย
+    else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+});
+
+
+// ======================================================
+// 3) Keyboard Navigation Menu
+// ======================================================
+const items = document.querySelectorAll('#menu li');
+let index = 0;
+
+items[index].focus();
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    index = (index + 1) % items.length;
+    items[index].focus();
+  }
+
+  if (e.key === 'ArrowUp') {
+    index = (index - 1 + items.length) % items.length;
+    items[index].focus();
+  }
+
+  if (e.key === 'Enter') {
+    alert("คุณเลือก: " + items[index].textContent);
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Image Gallery</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .gallery {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      max-width: 720px;
+      width: 100%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .viewer-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .viewer {
+      width: 100%;
+      display: block;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(0,0,0,0.4);
+      color: white;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 18px;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0,0,0,0.6);
+    }
+
+    .nav-btn.prev {
+      left: 8px;
+    }
+
+    .nav-btn.next {
+      right: 8px;
+    }
+
+    .thumbs {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      overflow-x: auto;
+    }
+
+    .thumbs img {
+      width: 80px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .thumbs img.active {
+      border-color: #007bff;
+    }
+
+    .hint {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Image Gallery</h1>
+
+  <div class="gallery">
+    <div class="viewer-wrapper">
+      <img id="mainImage" class="viewer" src="" alt="Gallery image" />
+
+      <button class="nav-btn prev" id="prevBtn">&#8592;</button>
+      <button class="nav-btn next" id="nextBtn">&#8594;</button>
+    </div>
+
+    <div class="thumbs" id="thumbContainer"></div>
+
+    <div class="hint">
+      ใช้ปุ่ม &larr; &rarr; บนคีย์บอร์ด หรือคลิกปุ่ม ซ้าย–ขวา เพื่อเปลี่ยนรูป
+    </div>
+  </div>
+
+  <script>
+    // รายการรูปภาพ (เปลี่ยนเป็น URL ของ AJ เองได้)
+    const images = [
+      "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ];
+
+    const mainImage = document.getElementById("mainImage");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const thumbContainer = document.getElementById("thumbContainer");
+
+    let currentIndex = 0;
+
+    // สร้าง thumbnail จากรายการรูป
+    images.forEach((src, index) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.dataset.index = index;
+      img.addEventListener("click", () => {
+        currentIndex = index;
+        updateImage();
+      });
+      thumbContainer.appendChild(img);
+    });
+
+    function updateImage() {
+      mainImage.src = images[currentIndex];
+
+      // อัปเดตสไตล์ thumbnail ที่ active
+      const thumbs = thumbContainer.querySelectorAll("img");
+      thumbs.forEach((thumb, i) => {
+        thumb.classList.toggle("active", i === currentIndex);
+      });
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage();
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateImage();
+    }
+
+    prevBtn.addEventListener("click", showPrev);
+    nextBtn.addEventListener("click", showNext);
+
+    // รองรับคีย์บอร์ด ← →
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    });
+
+    // เริ่มต้นแสดงรูปแรก
+    updateImage();
+  </script>
+</body>
+</html>

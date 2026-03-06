@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Todo List Basic – DOM Practice</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+    .todo-input-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .todo-input-row input {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+    }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 14px;
+    }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #e5e7eb;
+      padding: 6px 8px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+    .todo-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .todo-text.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+    .btn-small {
+      padding: 3px 8px;
+      font-size: 0.75rem;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Todo List – DOM Basic</h1>
+    <p class="hint">
+      พิมพ์งานที่ต้องทำ แล้วกด "เพิ่ม" สามารถติ๊กว่าเสร็จ / ลบงานได้
+    </p>
+
+    <!-- แถว input + ปุ่มเพิ่ม -->
+    <div class="todo-input-row">
+      <input type="text" id="todoInput" placeholder="พิมพ์งานที่ต้องทำ..." />
+      <button id="addTodoBtn" class="btn btn-primary">เพิ่ม</button>
+    </div>
+
+    <!-- รายการงาน -->
+    <ul id="todoList"></ul>
+  </div>
+
+  <script>
+    // ดึง element ด้วย querySelector
+    const todoInput  = document.querySelector('#todoInput');
+    const addTodoBtn = document.querySelector('#addTodoBtn');
+    const todoList   = document.querySelector('#todoList');
+
+    // ฟังก์ชันสร้าง todo item (ใช้ createElement + appendChild + classList)
+    function createTodoItem(text) {
+      // <li class="todo-item">
+      const li = document.createElement('li');
+      li.classList.add('todo-item');
+
+      // ซ้าย: checkbox + ข้อความ
+      const leftDiv = document.createElement('div');
+      leftDiv.classList.add('todo-left');
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+
+      const span = document.createElement('span');
+      span.textContent = text;
+      span.classList.add('todo-text');
+
+      leftDiv.appendChild(checkbox);
+      leftDiv.appendChild(span);
+
+      // ขวา: ปุ่มลบ
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'ลบ';
+      deleteBtn.classList.add('btn', 'btn-danger', 'btn-small');
+
+      // ประกอบ li
+      li.appendChild(leftDiv);
+      li.appendChild(deleteBtn);
+
+      // ---- Events ----
+
+      // 1) ติ๊กงานว่าเสร็จ / ไม่เสร็จ (toggle class)
+      checkbox.addEventListener('change', () => {
+        span.classList.toggle('completed'); // classList.toggle
+      });
+
+      // 2) ลบงาน
+      deleteBtn.addEventListener('click', () => {
+        li.remove();
+      });
+
+      return li;
+    }
+
+    // ฟังก์ชันเพิ่มงานใหม่
+    function addTodo() {
+      const text = todoInput.value.trim();
+      if (text === '') {
+        return; // ไม่เพิ่มถ้าว่าง
+      }
+
+      const todoItem = createTodoItem(text);
+      todoList.appendChild(todoItem); // appendChild
+
+      todoInput.value = '';
+      todoInput.focus();
+    }
+
+    // คลิกปุ่ม "เพิ่ม"
+    addTodoBtn.addEventListener('click', addTodo);
+
+    // กด Enter ในช่อง input ก็เพิ่มได้
+    todoInput.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter') {
+        addTodo();
+      }
+    });
+  </script>
+</body>
+</html>

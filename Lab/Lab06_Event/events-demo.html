@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Events Demo</title>
+    <style>
+        body {
+            font-family: "Prompt", sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            margin-top: 25px;
+            font-size: 20px;
+        }
+
+        .section {
+            background: #ffffff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            background: #00bfff;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #0095d6;
+        }
+
+        input[type="text"] {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            width: 220px;
+        }
+
+        #dropZone, #draggableElement, #touchBox {
+            border-radius: 8px;
+        }
+
+        #draggableElement {
+            width: 120px;
+            padding: 10px;
+            background: #ffe0b2;
+            border: 1px solid #ff9800;
+            cursor: move;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #dropZone {
+            width: 200px;
+            height: 120px;
+            border: 2px dashed #2196f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e3f2fd;
+        }
+
+        #touchBox {
+            width: 200px;
+            height: 100px;
+            background: #e0f7fa;
+            border: 1px solid #00bcd4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        #output {
+            margin-top: 25px;
+            background: #222;
+            color: #0f0;
+            padding: 12px;
+            border-radius: 10px;
+            font-family: Consolas, monospace;
+            white-space: pre-wrap;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
+        small {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Events Demo</h1>
+<p>ตัวอย่าง Event ยอดนิยม 7 แบบ พร้อมแสดงผลในกล่อง Log ด้านล่าง</p>
+
+<!-- 1) Mouse Event -->
+<div class="section">
+    <h2>1) Mouse Event – <code>onclick</code></h2>
+    <button id="myButton">คลิกปุ่มนี้</button>
+    <p><small>เมื่อคลิกปุ่ม จะมีข้อความแสดงใน Log</small></p>
+</div>
+
+<!-- 2) Keyboard Event -->
+<div class="section">
+    <h2>2) Keyboard Event – <code>onkeyup</code></h2>
+    <p>ลองกดปุ่มบนคีย์บอร์ดใด ๆ แล้วปล่อย (โฟกัสอยู่ที่หน้าเว็บ)</p>
+    <p><small>ระบบจะบอกว่า “คุณปล่อยปุ่มอะไร” ใน Log</small></p>
+</div>
+
+<!-- 3) Input Event -->
+<div class="section">
+    <h2>3) Input Event – <code>oninput</code></h2>
+    <input type="text" id="myInput" placeholder="ลองพิมพ์ข้อความที่นี่…">
+    <p><small>ขณะพิมพ์ ระบบจะแสดงข้อความที่กำลังพิมพ์ใน Log แบบ real-time</small></p>
+</div>
+
+<!-- 4) Window Event -->
+<div class="section">
+    <h2>4) Window Event – <code>onresize</code></h2>
+    <p>ลองย่อ/ขยายหน้าต่างเบราว์เซอร์ จะเห็นขนาดใหม่ใน Log</p>
+</div>
+
+<!-- 5) Touch Event -->
+<div class="section">
+    <h2>5) Touch Event – <code>ontouchstart</code></h2>
+    <div id="touchBox">แตะบนกล่องนี้ (บนมือถือ/แท็บเล็ต)</div>
+    <p><small>บน Desktop ส่วนใหญ่จะไม่ยิง touch event, ใช้ทดสอบบนมือถือ</small></p>
+</div>
+
+<!-- 6) Clipboard Event -->
+<div class="section">
+    <h2>6) Clipboard Event – <code>oncopy</code></h2>
+    <p>เลือกข้อความนี้แล้วกด Ctrl+C / Copy:</p>
+    <p id="copyText">ข้อความตัวอย่างสำหรับทดสอบ event <strong>oncopy</strong></p>
+</div>
+
+<!-- 7) Drag & Drop Event -->
+<div class="section">
+    <h2>7) Drag & Drop Events – <code>ondragstart</code> + <code>ondrop</code></h2>
+    <div id="draggableElement" draggable="true">ลากฉันไปวางด้านขวา</div>
+    <div id="dropZone">Drop Zone</div>
+    <p><small>ลากกล่องสีส้มไปปล่อยบนพื้นที่ Drop Zone แล้วดู Log</small></p>
+</div>
+
+<!-- Log Output -->
+<div id="output">[Log] เริ่มต้นระบบ Event Demo…</div>
+
+<script>
+    // ฟังก์ชันช่วยเขียน log
+    const output = document.getElementById("output");
+    function log(msg) {
+        console.log(msg);
+        output.textContent += "\n" + msg;
+        output.scrollTop = output.scrollHeight;
+    }
+
+    // 1) Mouse Event: onclick
+    document.getElementById("myButton").onclick = function() {
+        alert("คุณคลิกปุ่ม!");
+        log("Mouse Event: คุณคลิกปุ่ม myButton");
+    };
+
+    // 2) Keyboard Event: onkeyup
+    document.onkeyup = function(event) {
+        log("Keyboard Event: คุณปล่อยปุ่ม → " + event.key);
+    };
+
+    // 3) Input Event: oninput
+    document.getElementById("myInput").oninput = function() {
+        log("Input Event: กำลังพิมพ์ → " + this.value);
+    };
+
+    // 4) Window Event: onresize
+    window.onresize = function() {
+        log("Window Event: ขนาดหน้าจอเปลี่ยนเป็น " +
+            window.innerWidth + " x " + window.innerHeight);
+    };
+
+    // 5) Touch Event: ontouchstart
+    document.getElementById("touchBox").ontouchstart = function(event) {
+        const x = event.touches[0].clientX;
+        const y = event.touches[0].clientY;
+        log("Touch Event: แตะที่ตำแหน่ง (" + x + ", " + y + ")");
+    };
+
+    // 6) Clipboard Event: oncopy
+    document.oncopy = function(event) {
+        log("Clipboard Event: คุณกำลังคัดลอกข้อมูล");
+    };
+
+    // 7) Drag & Drop Events
+    const dragItem = document.getElementById("draggableElement");
+    const dropZone = document.getElementById("dropZone");
+
+    // เริ่มลาก
+    dragItem.ondragstart = function(event) {
+        event.dataTransfer.setData("text", event.target.id);
+        log("Drag Event: เริ่มลาก element id = " + event.target.id);
+    };
+
+    // ต้องอนุญาตให้ drop ได้โดยป้องกันค่า default
+    dropZone.ondragover = function(event) {
+        event.preventDefault();
+    };
+
+    // วางลง
+    dropZone.ondrop = function(event) {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+        log("Drop Event: วาง element id = " + data + " ลงใน dropZone สำเร็จ");
+    };
+</script>
+
+</body>
+</html>

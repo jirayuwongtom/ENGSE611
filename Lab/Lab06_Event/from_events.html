@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="username" placeholder="Username (ต้องมี 3+ ตัวอักษร)">
+    </div>
+
+    <script>
+        let username = document.getElementById('username');
+        
+        username.addEventListener('focus' , function() {
+            this.style.backgroundColor = '#e3f2fd';
+        });
+
+        username.addEventListener('blur' , function() {
+            this.style.backgroundColor = '';
+
+            if (this.value.length < 3) {
+                this.style.borderColor = 'red';
+            }else{
+                this.style.borderColor = 'green';
+            }
+        });
+    </script>
+</body>
+</html>
